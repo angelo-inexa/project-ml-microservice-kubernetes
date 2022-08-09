@@ -30,15 +30,47 @@ source .devops/bin/activate
 ```
 * Run `make install` to install the necessary dependencies
 
+```bash
+cd project-ml-microservice-kubernetes
+make install
+```
+* Run make lint to install the necessary dependencies
+```bash
+make lint
+```
 ### Running `app.py`
 
 1. Standalone:  `python app.py`
+```bash
+python3 app.py
+```
+
 2. Run in Docker:  `./run_docker.sh`
-3. Run in Kubernetes:  `./run_kubernetes.sh`
+```bash
+chmod +x ./run_docker.sh
+./run_docker.sh
+./run_docker.sh > output_txt_files/docker_out.txt
+```
+3. Test predictions(local): `./make_prediction.sh`
+```bash
+chmod +x ./make_prediction.sh 
+./make_prediction.sh 
+```
+4. Push docker image: `./upload_docker.sh`
+```bash
+# edit docker_password.txt (set your docker hub password)
+# edit upload_docker.sh (set your dockerHubImage, dockerHubLogin)
+chmod +x ./upload_docker.sh
+./upload_docker.sh
+```
 
-### Kubernetes Steps
-
-* Setup and Configure Docker locally
-* Setup and Configure Kubernetes locally
-* Create Flask app in Container
-* Run via kubectl
+5. Run in Kubernetes:  `./run_kubernetes.sh`
+```bash
+chmod +x ./run_kubernetes.sh
+./run_kubernetes.sh 
+```
+6. Test predictions(after deploy): `./make_prediction.sh`
+```bash
+chmod +x ./make_prediction.sh 
+./make_prediction.sh 
+```
