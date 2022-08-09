@@ -10,4 +10,4 @@ docker build --tag=microserviceproject .
 docker images list
 # Step 3: 
 # Run flask app
-docker run -p 8000:80 microserviceproject
+docker run -d -p 8000:80 --name microserviceproject microserviceproject

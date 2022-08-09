@@ -49,7 +49,7 @@ python3 app.py
 ```bash
 chmod +x ./run_docker.sh
 ./run_docker.sh
-./run_docker.sh > output_txt_files/docker_out.txt
+docker logs -f microserviceproject &> output_txt_files/docker_out.txt &
 ```
 3. Test predictions(local): `./make_prediction.sh`
 ```bash
@@ -68,6 +68,7 @@ chmod +x ./upload_docker.sh
 ```bash
 chmod +x ./run_kubernetes.sh
 ./run_kubernetes.sh 
+kubectl logs -f  -lapp=microserviceproject --all-containers=true &> output_txt_files/kubernetes_out.txt &
 ```
 6. Test predictions(after deploy): `./make_prediction.sh`
 ```bash
